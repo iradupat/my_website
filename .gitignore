@@ -1,0 +1,34 @@
+# Ignore Python-related files
+*.pyc
+*.pyo
+__pycache__/
+
+# Ignore database files
+db.sqlite3
+
+# Ignore development and local settings
+*.env
+*.env.*
+
+# Ignore static files
+/static/
+
+# Ignore media files
+/media/
+
+# Ignore virtual environment
+venv/
+env/
+
+# Ignore local configuration
+*.log
+*.pot
+*.pyc
+*.pyo
+*.orig
+*.swp
+*~
+migrations
+# Ignore system files
+.DS_Store
+Thumbs.db

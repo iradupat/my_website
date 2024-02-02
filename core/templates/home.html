@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patrick Iradukunda</title>
+    <script src="https://kit.fontawesome.com/469bc4a5b3.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+        a{
+            color: rgb(182, 3, 3);
+        }
+        body{
+            height: 100vh;
+        }
+
+        .navigation{
+            display: flex;
+            justify-content: space-between;
+            width: 70%;
+            flex-wrap: wrap;
+            height: 90%;
+            align-items: center;
+        }
+        .navigation-links{
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .teaching-link{
+            height: 100px;
+            background: rgba(242, 84, 83, 0.60);
+            color: #fff;
+            margin: 10px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+
+        }
+        .personal-link{
+            height: 100px;
+            background: #2BA1E9;
+            color: #fff;
+            flex: 1;
+            margin: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .projects-link{
+            height: 100px;
+            background: #52BB83;
+            color: #fff;
+            flex: 1;
+            margin: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+
+        }
+
+        .body{
+            height: 90%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cfooter{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            /* background-color: red; */
+            height: 10%;
+        }
+
+        .cfooter-linkedin{
+            margin-top: 10px;
+            width: 15px;
+            height: 15px;
+        }
+
+        .actions{
+            height: 5%;
+            width: 100%;
+            padding-left: 10%;
+            padding-right: 10%;
+            display: flex;
+            justify-content: flex-end;
+
+        }
+        .actions a{
+            margin: 10px;
+        } 
+        .actions button {
+            border: none;
+            padding: 0;
+            margin: 10px;
+            font-size: 16px;
+            background: none;
+            cursor: pointer;
+            color: rgb(182, 3, 3); /* Link color */
+            text-decoration: underline; /* Underline to mimic link */
+        }
+
+        /* Remove the button styling on focus */
+        .actions button:focus {
+            outline: none;
+        }
+        </style>
+</head>
+<body>
+
+    <div class="body">
+        <div class="actions">
+            {% if user.is_superuser %}
+            <a href="/adduser">Add users</a>
+            {% endif %}
+            {% if user.is_authenticated %}
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button  type="submit">Log Out</button>
+              </form>
+            {% else %}
+            <a href="/login">Login</a>
+            {% endif %}
+
+        </div>
+        
+       <div class="navigation">
+                <div class="personal-link">
+                    <a class="navigation-links" href="/personal">Personal</a>
+                </div>
+            
+                <div class="projects-link">
+                    <a class="navigation-links" href="/projects">Research/Projects</a>
+                </div>
+            
+                <div class="teaching-link">
+
+                    <a class="navigation-links" href="/teaching">Teaching</a>
+                </div>
+        </div>
+    </div>
+    <div class="cfooter">
+        <a href='mailto:info@pacademics.net'>info@pacademics.net</a>
+        <a target="_blank" href="https://www.linkedin.com/in/iradukunda-patrick-9b7ba118b/"><img  class="cfooter-linkedin" src="{% static 'linkedin.png' %}" alt="Linkedin"></a> 
+        <!-- <a href=""><i class="fa-brands fa-linkedin"></i></a> -->
+        <!-- <i class="fa-brands fa-linkedin-in"></i> -->
+    </div>
+</body>
+</html>
+

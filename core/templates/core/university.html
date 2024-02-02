@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block content  %}
+<div class="projects-details">
+    <h3>{{university}} - #{{student.student_id}}</h3>
+    <div class="university-body">
+        <div class="university-content">
+            <h4>Notes/Resources</h4>
+            <ul>
+                {% for r in resources %}   
+                    <li>
+                       <u><h4>{{r.0.course.name}}</h4></u>
+                        <ul>
+                            {% for rr in r %}
+                                <li>
+                                    <a target="_blank" href="{{rr.url}}">{{rr.name}} </a>
+                                </li>   
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+            <h4>Evaluations</h4>
+
+            <ul>
+                {% for c in courses %}
+                <u><h4>{{c.name}}</h4></u>
+                <ul>
+                    {% for a in c.get_assignments %}
+                    <b>Assignments</b>
+                    <ul>
+                        <li>
+                            <a target="_blank" href="{{a.url}}">{{a.name}} </a>
+                            <p><small>{{a.description}}</small></p>
+                        </li>
+                       
+                    </ul>
+                    {% endfor %}
+                </ul>
+                <ul>
+                    {% for cat in c.get_cats %}
+                    <b>CAT</b>
+                    <ul>
+                        <li>
+                            <a target="_blank" href="{{cat.url}}">{{cat.name}} </a>
+                            <p><small>{{cat.description}}</small></p>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                </ul>
+                <ul>
+                    {% for e in c.get_exams %}
+                    <b>Exams</b>
+                    <ul>
+                        <li>
+                            <a target="_blank" href="{{c.url}}">{{c.name}} </a>
+                            <p><small>{{c.description}}</small></p>
+                        </li>
+                    </ul>
+                    {% endfor %}
+                    
+                </ul>
+                {% endfor %}
+                    
+                
+                 
+            </ul>
+            
+        </div>
+
+        <div class="university-content">
+            <h4>Score</h4>
+            <ul>
+                <li>
+                    <p>UNIVERSITY OF KIGALI</p>
+                    <!-- <a href="/university/1">University of Kigali</a> -->
+                </li>
+            </ul>
+
+        <h4>Calendar</h4>
+        </div>
+    </div>
+    
+    
+   
+    <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae, sint. Veritatis nemo et nisi consequuntur minus dicta fugiat eveniet necessitatibus soluta cum pariatur, voluptatibus laudantium distinctio illo nam. Doloremque natus numquam vel minus dolorum et, eos, blanditiis quisquam totam eveniet reiciendis nulla at earum officia debitis voluptatem nostrum accusantium ratione tempora asperiores magni, error labore. Sit, adipisci ipsa nesciunt quibusdam voluptates vel minima voluptatum atque, dicta fuga corporis expedita sed enim dolor a asperiores deserunt molestiae sint facilis odit. Perferendis eveniet maxime numquam illum. Suscipit quibusdam sed ipsam voluptatem, quia iusto, hic, sunt delectus corrupti modi laboriosam odit! Dignissimos, accusantium.</p> -->
+</div>
+{% endblock %}

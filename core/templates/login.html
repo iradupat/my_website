@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
+
+body {
+  /* background: #c0c0c0;  */
+  /* background-color: rgba(242, 84, 83, 0.60); */
+  font-family: Raleway, sans-serif;
+  color: #666;
+}
+
+.login {
+  margin: 20px auto;
+  padding: 40px 50px;
+  max-width: 300px;
+  border-radius: 5px;
+  /* background: #fff; */
+  background-color: #52BB83;
+
+  box-shadow: 1px 1px 1px #666;
+}
+  .login input {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 14px 12px;
+    font-size: 16px;
+    border-radius: 2px; 
+    font-family: Raleway, sans-serif;
+  }
+
+.login input[type=text],
+.login input[type=password] {
+  border: 1px solid #c0c0c0;
+  transition: .2s;
+}
+
+.login input[type=text]:hover {
+  border-color: #F44336;
+  outline: none;
+  transition: all .2s ease-in-out;
+} 
+
+.login input[type=submit] {
+  border: none;
+  background: #EF5350;
+  color: white;
+  font-weight: bold;  
+  transition: 0.2s;
+  margin: 20px 0px;
+}
+
+.login input[type=submit]:hover {
+  background: #F44336;  
+}
+
+  .login h2 {
+    margin: 20px 0 0; 
+    color: #fff;
+    font-size: 28px;
+  }
+
+.login p {
+  margin-bottom: 40px;
+}
+
+.links {
+  display: table;
+  width: 100%;  
+  box-sizing: border-box;
+  border-top: 1px solid #c0c0c0;
+  margin-bottom: 10px;
+}
+
+.links a {
+  display: table-cell;
+  padding-top: 10px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.links a:first-child {
+  text-align: left;
+}
+
+.links a:last-child {
+  text-align: right;
+}
+
+  .login h2,
+  .login p,
+  .login a {
+    text-align: center;    
+  }
+
+.login a {
+  text-decoration: none;  
+  font-size: .8em;
+}
+
+.login a:visited {
+  color: inherit;
+}
+
+.login a:hover {
+  text-decoration: underline;
+}
+
+/* Banner */
+.info {
+            background: #52BB83;
+        }
+        .error{
+            background-color: rgba(242, 84, 83, 0.60);
+        }
+
+        .banner__content {
+        padding: 16px;
+        max-width: 500px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        }
+
+        .banner__text {
+        flex-grow: 1;
+        line-height: 1.4;
+        font-family: "Quicksand", sans-serif;
+        }
+
+        .banner__close {
+        background: none;
+        border: none;
+        cursor: pointer;
+        }
+
+        .banner__text,
+        .banner__close > span {
+        color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div  {% if message.tags %} class="{{ message.tags }}" {%else%} class="info" {% endif %}>
+
+            <div class="banner__content">
+              <div class="banner__text">
+                <strong style="text-transform: capitalize;">{{ message.tags }}:</strong>{{ message }}
+              </div>
+              <button class="banner__close" type="button">
+                <span class="material-icons">
+                  close
+                </span>
+              </button>
+            </div>
+          </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form method="post" class="login">
+        {% csrf_token %}
+        <h2>Welcome!</h2>
+        <p>Please log in</p>
+        <input type="text" autocomplete="off" name="passcode"  placeholder="Passcode" />
+        <!-- <input type="password" placeholder="Password" /> -->
+        <input type="submit" value="Log In" />
+        <div class="links">
+          <a href="#">Request a new code</a>
+          <!-- <a href="#">Register</a> -->
+        </div>
+      </form>
+</body>
+<script>
+    document.querySelector(".banner__close").addEventListener("click", function () {
+        try{
+            this.closest(".info").style.display = "none";
+        }catch(e){
+            this.closest(".error").style.display = "none";
+        }
+    });
+</script>
+</html>

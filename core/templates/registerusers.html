@@ -1,0 +1,81 @@
+<!-- templates/upload_file.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Excel File</title>
+    <style>
+        /* Banner */
+.info {
+            background: #52BB83;
+        }
+        .error{
+            background-color: rgba(242, 84, 83, 0.60);
+        }
+
+        .banner__content {
+        padding: 16px;
+        max-width: 500px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        }
+
+        .banner__text {
+        flex-grow: 1;
+        line-height: 1.4;
+        font-family: "Quicksand", sans-serif;
+        }
+
+        .banner__close {
+        background: none;
+        border: none;
+        cursor: pointer;
+        }
+
+        .banner__text,
+        .banner__close > span {
+        color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Upload Excel File</h1>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <div  {% if message.tags %} class="{{ message.tags }}" {%else%} class="info" {% endif %}>
+
+            <div class="banner__content">
+              <div class="banner__text">
+                <strong style="text-transform: capitalize;">{{ message.tags }}:</strong>{{ message }}
+              </div>
+              <button class="banner__close" type="button">
+                <span class="material-icons">
+                  close
+                </span>
+              </button>
+            </div>
+          </div>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Upload</button>
+    </form>
+</body>
+<script>
+    document.querySelector(".banner__close").addEventListener("click", function () {
+        try{
+            this.closest(".info").style.display = "none";
+        }catch(e){
+            this.closest(".error").style.display = "none";
+        }
+    });
+</script>
+</html>

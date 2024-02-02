@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>{{page}}</title>
+    <script src="https://kit.fontawesome.com/469bc4a5b3.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        a{
+            color: rgb(182, 3, 3);
+        }
+        body{
+            height: 100vh;
+        }
+
+
+        .cheader{
+            width: 100%;
+            min-height: 23%;
+            /* background-color: red; */
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: column;
+            flex-wrap: wrap;
+                    
+        }
+
+        .page-title{
+            font-size: 24px;
+        }
+        .navigation{
+            display: flex;
+            justify-content: space-between;
+            width: 70%;
+        }
+        .navigation-links{
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .teaching-link{
+            height: 46px;
+            background: rgba(242, 84, 83, 0.60);
+            color: #fff;
+            /* min-width: 20%; */
+            flex: 1;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+
+        }
+        .personal-link{
+            height: 46px;
+            background: #2BA1E9;
+            color: #fff;
+            /* min-width: 20%; */
+            margin: 10px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+
+        .projects-link{
+            height: 46px;
+            background: #52BB83;
+            color: #fff;
+            /* min-width: 20%; */
+            margin: 10px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+
+        }
+
+        .body{
+         padding-left: 10%;
+         padding-right: 10%;
+        }
+
+        .cfooter{
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            /* background-color: red; */
+            height: 10%;
+        }
+        .cfooter-ul{
+            list-style: none;
+        }
+        .logo{
+            height: 25px;
+            width: 100px;
+        }
+        .cfooter-linkedin{
+            margin-top: 10px;
+            width: 15px;
+            height: 15px;
+        }
+
+        /* Personal info page */
+        .personal-details{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 4%;
+            padding-bottom: 4%;
+        }
+        .profile-image{
+            width: 15%;
+            /* height: 160px; */
+            border-radius: 150px;
+            object-fit: cover;
+            margin-bottom: 1%;
+        }
+        .personal-description{
+            text-align: left;
+        }
+        .personal-description > p{
+            margin-bottom: 10px;
+        }
+
+        /* Projects  */
+        .projects-details{
+            padding-top: 4%;
+            padding-bottom: 4%;
+            padding-right: 10%;
+            padding-left: 10%;
+        }
+        .projects-description{
+            text-align: left;
+            margin-top: 3%;
+            color: rgb(66, 65, 65);
+        }
+
+        .projects-description > ul{
+            margin-top: 10px;
+            padding-left: 5%;
+            list-style: none;
+        }
+        .projects-description > ul > li{
+            margin-bottom: 10px;
+        }
+
+
+        /* Banner */
+        .info {
+            background: #52BB83;
+        }
+        .error{
+            background-color: rgba(242, 84, 83, 0.60);
+        }
+
+        .banner__content {
+        padding: 16px;
+        max-width: 500px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        }
+
+        .banner__text {
+        flex-grow: 1;
+        line-height: 1.4;
+        font-family: "Quicksand", sans-serif;
+        }
+
+        .banner__close {
+        background: none;
+        border: none;
+        cursor: pointer;
+        }
+
+        .banner__text,
+        .banner__close > span {
+        color: #ffffff;
+        }
+
+        /* University */
+
+        .university-body{
+            display: flex;
+        }
+        .university-content{
+            text-align: left;
+            margin-top: 3%;
+            color: rgb(66, 65, 65);
+            flex: 1;
+        }
+        .university-content  ul{
+            margin-top: 10px;
+            padding-left: 5%;
+            list-style: none;
+        }
+        .university-content  ul  li{
+            margin-bottom: 10px;
+        }
+        /* Media queries */
+        @media only screen and (max-width: 615px) {
+            .navigation-links{
+                font-size: 11px;
+            }
+            .navigation{
+                width: 100%;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="cheader">
+        <a title="Home" href="/"><img class="logo" src="{% static 'logo.png' %}" alt="Logo"></a>
+        <p class="page-title">{{page}}</p>
+        <div class="navigation">
+                <div class="personal-link">
+                    <a class="navigation-links" href="/personal">Personal</a>
+                </div>
+            
+                <div class="projects-link">
+                    <a class="navigation-links" href="/projects">Research/Projects</a>
+                </div>
+            
+                <div class="teaching-link">
+
+                    <a class="navigation-links" href="/teaching">Teaching</a>
+                </div>
+        </div>
+    </div>
+    <div class="body">
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <div  {% if message.tags %} class="{{ message.tags }}" {%else%} class="info" {% endif %}>
+
+                <div class="banner__content">
+                  <div class="banner__text">
+                    <strong style="text-transform: capitalize;">{{ message.tags }}:</strong>{{ message }}
+                  </div>
+                  <button class="banner__close" type="button">
+                    <span class="material-icons">
+                      close
+                    </span>
+                  </button>
+                </div>
+              </div>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div class="cfooter">
+        <a href="">info@pacademics.net</a>
+        <a target="_blank" href="https://www.linkedin.com/in/iradukunda-patrick-9b7ba118b/"><img  class="cfooter-linkedin" src="{% static 'linkedin.png' %}" alt="Linkedin"></a> 
+        <!-- <a href=""><i class="fa-brands fa-linkedin"></i></a> -->
+        <!-- <i class="fa-brands fa-linkedin-in"></i> -->
+    </div>
+</body>
+<script>
+    document.querySelector(".banner__close").addEventListener("click", function () {
+        try{
+            this.closest(".info").style.display = "none";
+        }catch(e){
+            this.closest(".error").style.display = "none";
+        }
+    });
+</script>
+</html>

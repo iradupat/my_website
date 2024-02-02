@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content  %}
+<div class="projects-details">
+    <div class="projects-description">
+        <div class="projects-description">
+            <h4>Universities/Institutions</h4>
+            <ul>
+                {% for university in universities %}
+                    <li>
+                        <a href="/university/{{university.pk}}">{{university}}</a>
+                    </li>
+                {% endfor %}
+                
+            </ul>
+        </div>
+
+        <h4>Resources</h4>
+        <ul>
+            {% for r in resources %}   
+                <li>
+                    <a target="_blank" href="{{r.url}}">{{r.name}} </a>
+                    <p><small>{{r.description}}</small></p>
+                </li>
+            {% endfor %}
+             
+        </ul>
+        
+    </div>
+    
+   
+    <!-- <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae, sint. Veritatis nemo et nisi consequuntur minus dicta fugiat eveniet necessitatibus soluta cum pariatur, voluptatibus laudantium distinctio illo nam. Doloremque natus numquam vel minus dolorum et, eos, blanditiis quisquam totam eveniet reiciendis nulla at earum officia debitis voluptatem nostrum accusantium ratione tempora asperiores magni, error labore. Sit, adipisci ipsa nesciunt quibusdam voluptates vel minima voluptatum atque, dicta fuga corporis expedita sed enim dolor a asperiores deserunt molestiae sint facilis odit. Perferendis eveniet maxime numquam illum. Suscipit quibusdam sed ipsam voluptatem, quia iusto, hic, sunt delectus corrupti modi laboriosam odit! Dignissimos, accusantium.</p> -->
+</div>
+{% endblock %}
